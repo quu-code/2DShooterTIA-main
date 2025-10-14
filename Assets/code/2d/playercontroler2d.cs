@@ -14,9 +14,9 @@ public class playercontroler2d : MonoBehaviour
     [SerializeField]
     float speed = 0.02f;
 
-    float timeSinceLastShot = 0;
+    float timeSinceLastJump = 0;
     [SerializeField]
-    float timeBetweenShots = 0.5f;
+    float timeBetweenJumps = 0.5f;
     
     
     void Update()
@@ -30,20 +30,20 @@ public class playercontroler2d : MonoBehaviour
 
         bool isGrounded = Physics2D.OverlapCircle(
             gCheck.transform.position,
-            .1f,
+            .5f,
             groundLayer
         );
 
-        timeSinceLastShot += Time.deltaTime;
+        timeSinceLastJump += Time.deltaTime;
 
-        if (Input.GetAxisRaw("Jump") > 0 && isGrounded == true && timeSinceLastShot > timeBetweenShots)
+        if (Input.GetAxisRaw("Jump") > 0 && isGrounded == true && timeSinceLastJump > timeBetweenJumps)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-            timeSinceLastShot = 0;
+            timeSinceLastJump = 0;
         }
-        print(timeSinceLastShot);
+        
     }
 }
