@@ -9,7 +9,13 @@ public class playercontroler2d : MonoBehaviour
     GameObject gCheck;
 
     [SerializeField]
+    GameObject bCheck;
+
+    [SerializeField]
     LayerMask groundLayer;
+
+    [SerializeField]
+    LayerMask buttonLayer;
 
     [SerializeField]
     float speed = 0.02f;
@@ -44,6 +50,15 @@ public class playercontroler2d : MonoBehaviour
 
             timeSinceLastJump = 0;
         }
-        
+        bool isgravpress = Physics2D.OverlapCircle(
+            bCheck.transform.position,
+            .3f,
+            buttonLayer
+        );
+
+        if (isgravpress == true)
+        {
+            print (timeSinceLastJump);
+        }
     }
 }
