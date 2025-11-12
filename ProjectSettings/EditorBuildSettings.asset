@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/space.unity
     guid: f365f0b6fef2eda438cb729e6a9020e7
   - enabled: 1
-    path: Assets/space game over.unity
+    path: Assets/2d game over.unity
     guid: 22738f5fa445545019dc721357cc9ea9
+  - enabled: 1
+    path: Assets/2d platformer.unity
+    guid: aa1beb731d280470bacc35dcb604be97
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -4,6 +4,6 @@ public class Scenechanger : MonoBehaviour
 {
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("2d platformer");
     }
 }

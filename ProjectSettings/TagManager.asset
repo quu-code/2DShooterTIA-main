@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - enemy
+  - kill
+  - flip
+  - door
   layers:
   - Default
   - TransparentFX
@@ -13,7 +16,7 @@ TagManager:
   - Water
   - UI
   - ground
-  - button
+  - flip
   - 
   - 
   - 

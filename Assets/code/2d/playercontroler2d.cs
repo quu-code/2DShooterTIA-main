@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class playercontroler2d : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +10,10 @@ public class playercontroler2d : MonoBehaviour
 
     [SerializeField]
     GameObject bCheck;
+
+    float currentHP = 0;
+    [SerializeField]
+    float maxHP = 1;
 
     [SerializeField]
     LayerMask groundLayer;
@@ -23,7 +27,10 @@ public class playercontroler2d : MonoBehaviour
     float timeSinceLastJump = 0;
     [SerializeField]
     float timeBetweenJumps = 0.5f;
-    
+    void Start()
+    {
+    currentHP = maxHP;
+    }
     
     void Update()
     {
@@ -50,15 +57,26 @@ public class playercontroler2d : MonoBehaviour
 
             timeSinceLastJump = 0;
         }
-        bool isgravpress = Physics2D.OverlapCircle(
-            bCheck.transform.position,
-            .3f,
-            buttonLayer
-        );
-
-        if (isgravpress == true)
-        {
-            print (timeSinceLastJump);
-        }
     }
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "flip")
+        {
+        transform.Rotate(90, 0, 0);
+        transform.Rotate(new Vector3(90, 0, 0));
+        jumpForce *= -1;
+        GetComponent<Rigidbody2D>().gravityScale *= -1;
+        }
+    if (collision.gameObject.tag == "kill")
+    {   
+      currentHP--;
+      print("ouch " + currentHP);
+    }
+
+    if(currentHP <= 0)
+    {
+    print("game over");
+    SceneManager.LoadScene("2d game over");
+    }
+    }
+  
 }
