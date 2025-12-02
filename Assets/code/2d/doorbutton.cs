@@ -20,11 +20,8 @@ public class doorbutton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         {
-            
-            transform.position = new Vector3(2, 1, 1);
-            transform.position = new Vector3(7, 0, 1);
-            print (door);
             door.GetComponent<door>().Open();
+            //transform.position.door(2, -1);
         }
     }
 }

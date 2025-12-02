@@ -2,34 +2,47 @@ using UnityEngine;
 
 public class door : MonoBehaviour
 {
+
+    int dooropen = 0;
+
     float timeSinceLastJump = 0;
-    [SerializeField]
-    float timeBetweenJumps = 0.5f;
+    
+    float timeBetweenJumps = 10;
 
     void Start()
     {
-        //transform.position = new Vector3(2, 1, 1);
+        transform.position = new Vector3(2, 1, 1);
     }
 
     
     void Update()
     {
-        timeSinceLastJump += Time.deltaTime;
+         if (dooropen == 1)
+        {
+            timeSinceLastJump += Time.deltaTime;
+            
+        }
         if (timeSinceLastJump > timeBetweenJumps)
         {
-            //transform.position = new Vector3(2, 1, 1);
-            timeSinceLastJump=0;
-        }
-    }
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "door" )
-        {
-            transform.position = new Vector3(2, 10, 1);
+            timeSinceLastJump= 0;
+            dooropen = 0;
             print (timeSinceLastJump);
         }
+        if (dooropen == 0)
+        {
+            transform.position = new Vector3(2, 1, 1);
+            
+        }
+        
+            if (dooropen == 1)
+        {
+            transform.position = new Vector3(2, -1, 1);
+            
+        }
     }
-
+    
     public void Open() {
+        dooropen = 1;
         
     }
 }

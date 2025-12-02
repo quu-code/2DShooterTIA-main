@@ -27,17 +27,28 @@ public class playercontroler2d : MonoBehaviour
     float timeSinceLastJump = 0;
     [SerializeField]
     float timeBetweenJumps = 0.5f;
+
+    Rigidbody2D myRigidbody;
+
+    Vector2 currentPosition;
+
     void Start()
     {
     currentHP = maxHP;
+
+    myRigidbody = GetComponent<Rigidbody2D>();
     }
     
     void Update()
     {
 
         float inputX = Input.GetAxis("Horizontal");
-        Vector2 movement = Vector2.right * inputX;
-        transform.Translate(movement * speed * Time.deltaTime);
+
+        currentPosition = transform.position;
+        //transform.position = currentPosition + new Vector2(inputX * speed);
+        //Vector2 movement = Vector2.right * inputX;
+        //transform.Translate(movement * speed * Time.deltaTime);
+        myRigidbody.linearVelocity = new Vector2(inputX * speed, myRigidbody.linearVelocity.y);
 
 
 
